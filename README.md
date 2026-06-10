@@ -1,78 +1,143 @@
-# Wanderly – Travel Inspiration Landing Page
+# BizFlow Rwanda 🇷🇼
 
-A modern, fully responsive static travel agency landing page built with **HTML5** and **CSS3**.  
-It showcases a hero section, feature highlights, popular destination cards, and a clean footer — all in a single file.
+An all-in-one business management web app built for Rwandan small and medium enterprises. Track inventory, manage customers, and monitor your stock value — all from a clean, fast, browser-based interface with no installation required.
 
-![Preview placeholder](https://via.placeholder.com/800x400?text=Wanderly+Landing+Page)
+---
 
-## ✨ Live Demo
+## Live Pages
 
-Open `index.html` directly in any modern web browser – no build steps or server required.
+| Page | File | Description |
+|------|------|-------------|
+| Home | `index.html` | Landing page with features overview |
+| Register | `register.html` | Create a new business account |
+| Login | `login.html` | Log in to your account |
+| Dashboard | `stock.html` | Manage your product inventory |
+| Customers | `customers.html` | View and manage registered accounts |
 
-## 📁 Project Structure
-project/
-├── index.html # Complete static website (HTML + CSS + embedded icons)
-└── README.md # Project documentation (this file)
+---
 
-text
+## Features
 
-## 🎨 Features
+- **Inventory Management** — Add products with name, quantity, and price. Grand total value is calculated automatically in RWF.
+- **Customer Registry** — View all registered businesses with their TIN numbers. Search by name, email, or TIN.
+- **Secure Accounts** — Each business account has its own private data. Products are stored per user, not shared.
+- **Rwanda-ready** — TIN number field built in. Prices displayed in Rwandan Francs (RWF).
+- **No backend needed** — All data is stored in the browser via `localStorage`. Works offline.
 
-- **Fully responsive** – looks great on desktop, tablet, and mobile.
-- **Smooth hover effects** – interactive cards, buttons, and navigation.
-- **Hero background image** – uses a free placeholder from Lorem Picsum (can be replaced).
-- **3 feature cards** – highlights core benefits.
-- **Destination grid** – 3 attractive destinations with images, descriptions, and call-to-action buttons.
-- **Footer** – includes social media icons (Font Awesome) and contact info.
-- **Google Fonts + Font Awesome** – clean typography and vector icons.
-- **No external dependencies** – everything is self-contained in one file.
+---
 
-## 🚀 How to Use
+## Getting Started
 
-1. **Download or copy** the entire `index.html` code.
-2. Save it as `index.html` on your computer.
-3. Double-click the file to open it in your web browser.
-4. (Optional) Modify the text, images, or colors to suit your brand.
+### Option 1 — Open directly in a browser
 
-## 🖼️ Customizing Images
+Download the repo and open `index.html` in any modern browser. No server, no dependencies, no build step.
 
-The current images are sourced from [Picsum Photos](https://picsum.photos/) (free stock photos).  
-To replace them:
+```bash
+git clone https://github.com/Sergeu250/Business-solution.git
+cd Business-solution
+open index.html   # macOS
+# or double-click index.html on Windows/Linux
+```
 
-- Search for new image URLs (or local paths) and update the `src` attribute in the `<img>` tags.
-- Example destination images are inside the `.destination-card` section.
+### Option 2 — Serve locally (recommended)
 
-```html
-<img class="card-img" src="your-new-image.jpg" alt="description">
-🎨 Changing Colors & Fonts
-The primary color is #1E6F5C (teal green).
-Search for #1E6F5C in the <style> block and replace it with your preferred hex code.
+```bash
+# Using Python
+python -m http.server 8000
 
-Fonts: currently uses 'Inter' from Google Fonts. You can change it in the <link> tag and the CSS font-family.
+# Using Node.js (npx)
+npx serve .
+```
 
-📱 Responsive Breakpoints
-Mobile first – the layout uses grid + flexbox with media queries at 768px and 480px.
+Then visit `http://localhost:8000` in your browser.
 
-The navigation stacks vertically on smaller screens.
+---
 
-Cards adjust from 3 columns to 1 or 2 columns automatically.
+## How to Use
 
-🛠️ Technologies Used
-HTML5
+1. **Register** — Go to `register.html`, enter your email, business name, TIN, and a password.
+2. **Log in** — Use your email and password on `login.html`.
+3. **Add products** — On the Dashboard (`stock.html`), fill in a product name, quantity, and unit price, then click **Add**.
+4. **View customers** — On the Customers page (`customers.html`), see all registered accounts. Use the search bar to filter.
+5. **Log out** — Click **Log out** in the sidebar at any time.
 
-CSS3 (Flexbox, Grid, custom properties, media queries)
+---
 
-Font Awesome 6 (free CDN)
+## Project Structure
 
-Google Fonts (Inter)
+```
+Business-solution/
+├── index.html       # Homepage / landing page
+├── register.html    # Account registration
+├── login.html       # Login form
+├── stock.html       # Inventory dashboard
+├── customers.html   # Customer management
+└── README.md
+```
 
-📄 License
-This project is free to use for personal and commercial purposes.
-No attribution required, but it's always appreciated.
+---
 
-💬 Feedback
-If you have suggestions or improvements, feel free to modify the code as needed.
-Enjoy building your travel brand with Wanderly!
+## Tech Stack
 
-Made with 🌍 for curious explorers.# Business-solution
-My Personal Repository
+| Layer | Technology |
+|-------|-----------|
+| Markup | HTML5 |
+| Styling | CSS3 (custom, no frameworks) |
+| Logic | Vanilla JavaScript |
+| Storage | Browser `localStorage` |
+| Fonts | Google Fonts — Inter |
+
+No external libraries. No backend. No database. Runs entirely in the browser.
+
+---
+
+## Data & Privacy
+
+All data is stored locally in the user's browser via `localStorage`. Nothing is sent to any server. Clearing browser storage or using a different browser/device will reset the data.
+
+> **Note:** This is a frontend-only prototype. For production use, connect to a real backend (e.g. Node.js + PostgreSQL) and replace `localStorage` with authenticated API calls. Do not store passwords in plain text in production.
+
+---
+
+## Screenshots
+
+| Page | Description |
+|------|-------------|
+| Homepage | Hero section with dashboard preview and feature cards |
+| Register | Split-panel layout with business onboarding checklist |
+| Login | Centered card with branded header |
+| Dashboard | Sidebar nav, stats cards, add-product form, product table |
+| Customers | Searchable table with avatar initials and TIN display |
+
+---
+
+## Roadmap
+
+- [ ] Sales / POS module
+- [ ] PDF invoice generation
+- [ ] Bookkeeping and expense tracking
+- [ ] CSV export for inventory and customers
+- [ ] Backend integration (Node.js + PostgreSQL)
+- [ ] Multi-language support (Kinyarwanda / French / English)
+
+---
+
+## Contributing
+
+Pull requests are welcome. For major changes, open an issue first to discuss what you'd like to change.
+
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m "Add my feature"`
+4. Push: `git push origin feature/my-feature`
+5. Open a Pull Request
+
+---
+
+## License
+
+MIT — free to use, modify, and distribute.
+
+---
+
+*Built for businesses like yours in Rwanda.*
