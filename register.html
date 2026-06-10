@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — BizFlow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --brand:      #0A7C59;
+      --brand-dark: #065C42;
+      --brand-pale: #E8F5F0;
+      --accent:     #F4A024;
+      --dark:       #111827;
+      --mid:        #374151;
+      --muted:      #6B7280;
+      --border:     #E5E7EB;
+      --light:      #F9FAFB;
+      --white:      #FFFFFF;
+      --error:      #EF4444;
+      --success:    #10B981;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* ── LEFT PANEL ── */
+    .left-panel {
+      background: var(--brand);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .left-panel::before {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(244,160,36,.3), transparent 70%);
+      pointer-events: none;
+    }
+    .left-panel .logo {
+      font-size: 22px; font-weight: 800;
+      color: var(--white); letter-spacing: -0.5px;
+      margin-bottom: 48px;
+    }
+    .left-panel .logo span { color: var(--accent); }
+    .left-panel h2 {
+      font-size: 36px; font-weight: 800;
+      color: var(--white); line-height: 1.2;
+      letter-spacing: -1px; margin-bottom: 16px;
+    }
+    .left-panel p {
+      font-size: 16px; color: rgba(255,255,255,0.75);
+      line-height: 1.7; margin-bottom: 40px;
+    }
+    .perks { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .perks li {
+      display: flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,0.9); font-size: 15px; font-weight: 500;
+    }
+    .perks li::before {
+      content: '✓';
+      width: 24px; height: 24px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 48px 40px;
+    }
+    .form-container { width: 100%; max-width: 400px; }
+    .form-container h3 {
+      font-size: 26px; font-weight: 800;
+      color: var(--dark); letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .form-container .sub {
+      font-size: 14px; color: var(--muted); margin-bottom: 32px;
+    }
+
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--mid); margin-bottom: 6px;
+    }
+    .field input {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      color: var(--dark); background: var(--white);
+      transition: border-color .15s, box-shadow .15s;
+      outline: none;
+    }
+    .field input:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(10,124,89,0.1);
+    }
+    .field input::placeholder { color: #9CA3AF; }
+
+    .submit-btn {
+      width: 100%; padding: 13px;
+      background: var(--brand); color: var(--white);
+      border: none; border-radius: 10px;
+      font-size: 15px; font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background .15s, transform .1s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+
+    #message {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 14px;
+      display: none;
+    }
+    #message.error { background: #FEF2F2; color: var(--error); display: block; }
+    #message.success { background: #ECFDF5; color: var(--success); display: block; }
+
+    .switch-link {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .switch-link a { color: var(--brand); font-weight: 600; text-decoration: none; }
+    .switch-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      body { grid-template-columns: 1fr; }
+      .left-panel { display: none; }
+      .right-panel { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="left-panel">
+  <div class="logo">Biz<span>Flow</span></div>
+  <h2>Start managing your business today</h2>
+  <p>Join hundreds of Rwandan businesses already using BizFlow to track stock and grow faster.</p>
+  <ul class="perks">
+    <li>Inventory tracking in seconds</li>
+    <li>Secure, private business data</li>
+    <li>TIN-ready for Rwanda compliance</li>
+    <li>Free to use, always</li>
+  </ul>
+</div>
+
+<div class="right-panel">
+  <div class="form-container">
+    <h3>Create your account</h3>
+    <p class="sub">Fill in your business details below to get started.</p>
+
+    <form id="registerForm">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@yourbusiness.com" required />
+      </div>
+      <div class="field">
+        <label for="business">Business name</label>
+        <input type="text" id="business" placeholder="e.g. Kigali Traders Ltd" required />
+      </div>
+      <div class="field">
+        <label for="tin">TIN Number</label>
+        <input type="text" id="tin" placeholder="e.g. 102345678" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Create a strong password" required />
+      </div>
+      <button type="submit" class="submit-btn">Create Account →</button>
+      <div id="message"></div>
+    </form>
+
+    <div class="switch-link">
+      Already have an account? <a href="login.html">Log in</a>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const email    = document.getElementById('email').value.trim();
+  const business = document.getElementById('business').value.trim();
+  const tin      = document.getElementById('tin').value.trim();
+  const password = document.getElementById('password').value;
+  const msg      = document.getElementById('message');
+
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+
+  if (users.find(u => u.email === email)) {
+    msg.textContent = 'An account with this email already exists.';
+    msg.className = 'error';
+    return;
+  }
+
+  users.push({ email, business, tin, password });
+  localStorage.setItem('users', JSON.stringify(users));
+
+  msg.textContent = 'Account created! Redirecting to login…';
+  msg.className = 'success';
+
+  setTimeout(() => { window.location.href = 'login.html'; }, 1400);
+});
+</script>
+</body>
+</html>

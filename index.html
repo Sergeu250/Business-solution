@@ -1,464 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Wanderly | Explore More, Worry Less</title>
-  <!-- Google Fonts + Font Awesome CDN for clean icons and typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BizFlow Rwanda — Business Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --brand:      #0A7C59;
+      --brand-dark: #065C42;
+      --brand-pale: #E8F5F0;
+      --accent:     #F4A024;
+      --dark:       #111827;
+      --mid:        #374151;
+      --muted:      #6B7280;
+      --light:      #F9FAFB;
+      --white:      #FFFFFF;
+      --radius:     12px;
+      --shadow:     0 4px 24px rgba(0,0,0,0.08);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-      background: #fefcf7;
-      color: #1e2a3a;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    /* container utility */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* header / navigation */
-    .navbar {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      min-height: 100vh;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 1.25rem 0;
-      gap: 1rem;
+      flex-direction: column;
     }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #1E6F5C, #289672);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #E5E7EB;
     }
-
-    .logo span {
-      background: none;
-      color: #1e2a3a;
-      font-weight: 700;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
+    .logo { font-size: 20px; font-weight: 800; color: var(--brand); letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 12px; align-items: center; }
     .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      color: #2c3e50;
-      transition: all 0.2s ease;
-      font-size: 1rem;
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      color: var(--mid); padding: 8px 16px; border-radius: 8px;
+      transition: background .15s;
     }
-
-    .nav-links a:hover {
-      color: #1E6F5C;
-      transform: translateY(-2px);
+    .nav-links a:hover { background: var(--brand-pale); color: var(--brand); }
+    .nav-links .cta {
+      background: var(--brand); color: var(--white);
+      padding: 8px 20px; border-radius: 8px;
     }
+    .nav-links .cta:hover { background: var(--brand-dark); color: var(--white); }
 
-    /* hero section */
+    /* ── HERO ── */
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://picsum.photos/id/15/1600/900');
-      background-size: cover;
-      background-position: center 35%;
-      border-radius: 0 0 2rem 2rem;
-      margin: 0 0 2.5rem 0;
-      padding: 5rem 1.5rem;
-      color: white;
-      text-align: center;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-
-    .hero-content {
-      max-width: 780px;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+      padding: 80px 48px;
+      max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
     }
-
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--brand-pale); color: var(--brand);
+      font-size: 13px; font-weight: 600;
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before { content: '🇷🇼'; }
     .hero h1 {
-      font-size: 3.2rem;
+      font-size: clamp(32px, 4vw, 52px);
       font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      color: var(--dark);
+      margin-bottom: 20px;
     }
-
+    .hero h1 em {
+      font-style: normal;
+      color: var(--brand);
+    }
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0.95;
-      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 460px;
+      margin-bottom: 36px;
     }
+    .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--brand); color: var(--white);
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 15px; font-weight: 600;
+      text-decoration: none; display: inline-block;
+      transition: background .15s, transform .1s;
+    }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: var(--mid);
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 15px; font-weight: 500;
+      text-decoration: none; border: 1.5px solid #D1D5DB;
+      transition: border-color .15s, color .15s;
+    }
+    .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
 
-    .btn {
-      display: inline-block;
-      background: #1E6F5C;
+    /* ── VISUAL PANEL ── */
+    .hero-visual {
+      background: var(--brand);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(10,124,89,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(244,160,36,.25), transparent 60%);
+    }
+    .dashboard-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 14px;
       color: white;
-      font-weight: 600;
-      padding: 0.85rem 2rem;
-      border-radius: 60px;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
+    .dashboard-card:last-child { margin-bottom: 0; }
+    .dc-label { font-size: 12px; opacity: 0.75; margin-bottom: 6px; font-weight: 500; }
+    .dc-value { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
+    .dc-value small { font-size: 13px; font-weight: 500; opacity: 0.75; margin-left: 6px; }
+    .dc-bar { height: 6px; background: rgba(255,255,255,0.2); border-radius: 4px; margin-top: 10px; }
+    .dc-bar-fill { height: 100%; background: var(--accent); border-radius: 4px; }
+    .dc-row { display: flex; gap: 12px; }
+    .dc-row .dashboard-card { flex: 1; margin-bottom: 0; }
 
-    .btn:hover {
-      background: #0e5545;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.25);
+    /* ── FEATURES ── */
+    .features {
+      background: var(--light);
+      padding: 80px 48px;
     }
-
-    /* features (3 columns) */
-    .features-section {
-      padding: 3rem 0 2rem 0;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.01em;
-      color: #1e2a3a;
-    }
-
+    .features-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 700; color: var(--brand); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: 34px; font-weight: 800; letter-spacing: -1px; color: var(--dark); margin-bottom: 48px; }
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
-
     .feature-card {
-      background: white;
-      padding: 2rem 1.5rem;
-      border-radius: 1.75rem;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.05);
-      border: 1px solid #f0ede8;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid #F3F4F6;
+      transition: transform .2s, box-shadow .2s;
     }
-
-    .feature-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
-      border-color: #e2dcd3;
-    }
-
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
     .feature-icon {
-      font-size: 2.8rem;
-      color: #1E6F5C;
-      margin-bottom: 1rem;
+      width: 48px; height: 48px;
+      background: var(--brand-pale);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
     }
+    .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+    .feature-card p { font-size: 14px; line-height: 1.6; color: var(--muted); }
 
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-weight: 700;
-    }
-
-    .feature-card p {
-      color: #4b5563;
-      font-size: 0.95rem;
-    }
-
-    /* destinations grid */
-    .destinations {
-      padding: 2rem 0 4rem 0;
-    }
-
-    .destinations-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-
-    .destination-card {
-      background: white;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .destination-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card-content {
-      padding: 1.5rem;
-    }
-
-    .card-content h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-content p {
-      color: #5a6874;
-      margin-bottom: 1.2rem;
-      line-height: 1.45;
-    }
-
-    .card-btn {
-      background: transparent;
-      border: 1.5px solid #1E6F5C;
-      color: #1E6F5C;
-      font-weight: 600;
-      padding: 0.5rem 1.25rem;
-      border-radius: 40px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s;
-    }
-
-    .card-btn i {
-      font-size: 0.85rem;
-      transition: transform 0.2s;
-    }
-
-    .card-btn:hover {
-      background: #1E6F5C;
-      color: white;
-      border-color: #1E6F5C;
-    }
-
-    .card-btn:hover i {
-      transform: translateX(4px);
-    }
-
-    /* footer */
-    .footer {
-      background: #111827;
-      color: #e5e7eb;
-      padding: 2.5rem 0 2rem;
-      margin-top: 2rem;
-      border-radius: 1.5rem 1.5rem 0 0;
-    }
-
-    .footer-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .footer-logo {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #b9f3e4, #6abf98);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .social-icons a {
-      color: #e5e7eb;
-      font-size: 1.4rem;
-      transition: all 0.2s;
-    }
-
-    .social-icons a:hover {
-      color: #1E6F5C;
-      transform: translateY(-3px);
-    }
-
-    .footer-copyright {
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
       text-align: center;
-      padding-top: 2rem;
-      font-size: 0.85rem;
-      color: #9ca3af;
-      border-top: 1px solid #1f2937;
-      margin-top: 1.5rem;
-      width: 100%;
+      padding: 28px 48px;
+      font-size: 14px;
+      line-height: 1.6;
     }
+    footer strong { color: var(--white); }
 
-    /* responsive tweaks */
     @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        text-align: center;
-      }
-      .nav-links {
-        justify-content: center;
-        gap: 1.5rem;
-      }
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .section-title {
-        font-size: 1.8rem;
-      }
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero {
-        padding: 3.5rem 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1rem;
-      }
-      .card-content h3 {
-        font-size: 1.3rem;
-      }
-      .feature-card {
-        padding: 1.5rem;
-      }
+      nav { padding: 16px 20px; }
+      .hero { grid-template-columns: 1fr; padding: 48px 20px; gap: 40px; }
+      .features { padding: 60px 20px; }
+      .features-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <nav class="navbar">
-      <div class="logo">Wanderly<span>.</span></div>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Destinations</a></li>
-        <li><a href="#">Experiences</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
+<nav>
+  <div class="logo">Biz<span>Flow</span></div>
+  <div class="nav-links">
+    <a href="login.html">Log in</a>
+    <a href="register.html" class="cta">Get Started Free</a>
   </div>
-</header>
+</nav>
 
-<main>
-  <!-- Hero section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Explore beyond the horizon</h1>
-      <p>Curated escapes, authentic moments — your next adventure starts here.</p>
-      <a href="#" class="btn">Start your journey <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+<section class="hero">
+  <div>
+    <div class="hero-badge">Built for Rwanda</div>
+    <h1>Run your business.<br><em>Not spreadsheets.</em></h1>
+    <p>Track stock, manage customers, and keep your books — all from one dashboard. No training required.</p>
+    <div class="hero-actions">
+      <a href="register.html" class="btn-primary">Start Managing Free →</a>
+      <a href="login.html" class="btn-ghost">Log in</a>
     </div>
-  </section>
+  </div>
 
-  <!-- Features section: why choose us -->
-  <div class="container features-section">
-    <h2 class="section-title">Why travel with us?</h2>
+  <div class="hero-visual">
+    <div class="dashboard-card">
+      <div class="dc-label">Grand Total Stock Value</div>
+      <div class="dc-value">RWF 2,450,000 <small>↑ 12%</small></div>
+      <div class="dc-bar"><div class="dc-bar-fill" style="width:68%"></div></div>
+    </div>
+    <div class="dc-row">
+      <div class="dashboard-card">
+        <div class="dc-label">Products</div>
+        <div class="dc-value">48</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dc-label">Customers</div>
+        <div class="dc-value">126</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="features-inner">
+    <div class="section-label">What you get</div>
+    <div class="section-title">Everything in one place</div>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-compass"></i></div>
-        <h3>Curated routes</h3>
-        <p>Handpicked destinations and immersive itineraries designed for curious souls.</p>
+        <div class="feature-icon">📦</div>
+        <h3>Inventory Tracking</h3>
+        <p>Add products, set quantities, and monitor your stock in real time. Never oversell again.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-tag"></i></div>
-        <h3>Best price guarantee</h3>
-        <p>Affordable luxury with transparent pricing — no hidden fees, ever.</p>
+        <div class="feature-icon">👥</div>
+        <h3>Customer Registry</h3>
+        <p>Keep all registered businesses and their TIN numbers organized in one searchable table.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-headset"></i></div>
-        <h3>24/7 travel support</h3>
-        <p>Real humans, real help — we're with you from booking to return.</p>
+        <div class="feature-icon">🔐</div>
+        <h3>Secure Accounts</h3>
+        <p>Each business gets its own account. Your data stays private and separated from everyone else's.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Grand Total View</h3>
+        <p>See your total inventory value at a glance — automatically calculated from price and quantity.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🇷🇼</div>
+        <h3>Rwanda-Focused</h3>
+        <p>Designed around the needs of Rwandan SMEs, with TIN number support built in from day one.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Works Instantly</h3>
+        <p>No installation. No complex setup. Register, log in, and start adding products in under two minutes.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Featured Destinations Grid -->
-  <div class="container destinations">
-    <h2 class="section-title">Popular getaways ✨</h2>
-    <div class="destinations-grid">
-      
-      <!-- Destination 1: Mountain Escape -->
-      <div class="destination-card">
-        <img class="card-img" src="https://picsum.photos/id/104/400/280" alt="Majestic mountain range with alpine lake" loading="lazy">
-        <div class="card-content">
-          <h3>Alpine Sanctuary</h3>
-          <p>Breathtaking peaks, hidden valleys, and cozy lodges. Perfect for nature reconnection and adventure trails.</p>
-          <a href="#" class="card-btn">Discover route <i class="fas fa-chevron-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Destination 2: Tropical Beach -->
-      <div class="destination-card">
-        <img class="card-img" src="https://picsum.photos/id/100/400/280" alt="Turquoise ocean and white sand beach" loading="lazy">
-        <div class="card-content">
-          <h3>Azure Coast</h3>
-          <p>Powder-soft sands, endless sunsets and crystal lagoons. Unwind in barefoot paradise.</p>
-          <a href="#" class="card-btn">Discover route <i class="fas fa-chevron-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Destination 3: City Lights -->
-      <div class="destination-card">
-        <img class="card-img" src="https://picsum.photos/id/96/400/280" alt="Vibrant city skyline at twilight" loading="lazy">
-        <div class="card-content">
-          <h3>Metropolitan Pulse</h3>
-          <p>Iconic architecture, world-class dining, and buzzing nightlife — energy that never sleeps.</p>
-          <a href="#" class="card-btn">Discover route <i class="fas fa-chevron-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- Footer section with socials -->
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-logo">Wanderly<span style="color:#b5e3cf;">.</span></div>
-    <div class="social-icons">
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-    </div>
-    <div style="font-size: 0.9rem;">
-      <i class="fas fa-phone-alt" style="margin-right: 6px;"></i> +1 (888) 432-1234<br>
-      <i class="fas fa-envelope" style="margin-right: 6px;"></i> hello@wanderly.travel
-    </div>
-  </div>
-  <div class="footer-copyright">
-    © 2025 Wanderly — crafted for explorers. All dreams belong to the journey.
-  </div>
+<footer>
+  <strong>BizFlow Rwanda</strong> — All-in-One Business Management Solution<br>
+  Integrating inventory management, customer tracking, and bookkeeping for businesses like yours.
 </footer>
 
 </body>
