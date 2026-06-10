@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Wanderly | Explore More, Worry Less</title>
+  <!-- Google Fonts + Font Awesome CDN for clean icons and typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background: #fefcf7;
+      color: #1e2a3a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* container utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* header / navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1.25rem 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1E6F5C, #289672);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo span {
+      background: none;
+      color: #1e2a3a;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2c3e50;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #1E6F5C;
+      transform: translateY(-2px);
+    }
+
+    /* hero section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://picsum.photos/id/15/1600/900');
+      background-size: cover;
+      background-position: center 35%;
+      border-radius: 0 0 2rem 2rem;
+      margin: 0 0 2.5rem 0;
+      padding: 5rem 1.5rem;
+      color: white;
+      text-align: center;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-content {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      font-weight: 400;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #1E6F5C;
+      color: white;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn:hover {
+      background: #0e5545;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* features (3 columns) */
+    .features-section {
+      padding: 3rem 0 2rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.01em;
+      color: #1e2a3a;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 1.75rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f0ede8;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+      border-color: #e2dcd3;
+    }
+
+    .feature-icon {
+      font-size: 2.8rem;
+      color: #1E6F5C;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    /* destinations grid */
+    .destinations {
+      padding: 2rem 0 4rem 0;
+    }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .destination-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .destination-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-content p {
+      color: #5a6874;
+      margin-bottom: 1.2rem;
+      line-height: 1.45;
+    }
+
+    .card-btn {
+      background: transparent;
+      border: 1.5px solid #1E6F5C;
+      color: #1E6F5C;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .card-btn i {
+      font-size: 0.85rem;
+      transition: transform 0.2s;
+    }
+
+    .card-btn:hover {
+      background: #1E6F5C;
+      color: white;
+      border-color: #1E6F5C;
+    }
+
+    .card-btn:hover i {
+      transform: translateX(4px);
+    }
+
+    /* footer */
+    .footer {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 2.5rem 0 2rem;
+      margin-top: 2rem;
+      border-radius: 1.5rem 1.5rem 0 0;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #b9f3e4, #6abf98);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-icons a {
+      color: #e5e7eb;
+      font-size: 1.4rem;
+      transition: all 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: #1E6F5C;
+      transform: translateY(-3px);
+    }
+
+    .footer-copyright {
+      text-align: center;
+      padding-top: 2rem;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      border-top: 1px solid #1f2937;
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+
+    /* responsive tweaks */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero {
+        padding: 3.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      .card-content h3 {
+        font-size: 1.3rem;
+      }
+      .feature-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">Wanderly<span>.</span></div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Destinations</a></li>
+        <li><a href="#">Experiences</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Explore beyond the horizon</h1>
+      <p>Curated escapes, authentic moments — your next adventure starts here.</p>
+      <a href="#" class="btn">Start your journey <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+    </div>
+  </section>
+
+  <!-- Features section: why choose us -->
+  <div class="container features-section">
+    <h2 class="section-title">Why travel with us?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-compass"></i></div>
+        <h3>Curated routes</h3>
+        <p>Handpicked destinations and immersive itineraries designed for curious souls.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-tag"></i></div>
+        <h3>Best price guarantee</h3>
+        <p>Affordable luxury with transparent pricing — no hidden fees, ever.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-headset"></i></div>
+        <h3>24/7 travel support</h3>
+        <p>Real humans, real help — we're with you from booking to return.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Destinations Grid -->
+  <div class="container destinations">
+    <h2 class="section-title">Popular getaways ✨</h2>
+    <div class="destinations-grid">
+      
+      <!-- Destination 1: Mountain Escape -->
+      <div class="destination-card">
+        <img class="card-img" src="https://picsum.photos/id/104/400/280" alt="Majestic mountain range with alpine lake" loading="lazy">
+        <div class="card-content">
+          <h3>Alpine Sanctuary</h3>
+          <p>Breathtaking peaks, hidden valleys, and cozy lodges. Perfect for nature reconnection and adventure trails.</p>
+          <a href="#" class="card-btn">Discover route <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Destination 2: Tropical Beach -->
+      <div class="destination-card">
+        <img class="card-img" src="https://picsum.photos/id/100/400/280" alt="Turquoise ocean and white sand beach" loading="lazy">
+        <div class="card-content">
+          <h3>Azure Coast</h3>
+          <p>Powder-soft sands, endless sunsets and crystal lagoons. Unwind in barefoot paradise.</p>
+          <a href="#" class="card-btn">Discover route <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Destination 3: City Lights -->
+      <div class="destination-card">
+        <img class="card-img" src="https://picsum.photos/id/96/400/280" alt="Vibrant city skyline at twilight" loading="lazy">
+        <div class="card-content">
+          <h3>Metropolitan Pulse</h3>
+          <p>Iconic architecture, world-class dining, and buzzing nightlife — energy that never sleeps.</p>
+          <a href="#" class="card-btn">Discover route <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer section with socials -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">Wanderly<span style="color:#b5e3cf;">.</span></div>
+    <div class="social-icons">
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+    </div>
+    <div style="font-size: 0.9rem;">
+      <i class="fas fa-phone-alt" style="margin-right: 6px;"></i> +1 (888) 432-1234<br>
+      <i class="fas fa-envelope" style="margin-right: 6px;"></i> hello@wanderly.travel
+    </div>
+  </div>
+  <div class="footer-copyright">
+    © 2025 Wanderly — crafted for explorers. All dreams belong to the journey.
+  </div>
+</footer>
+
+</body>
+</html>
